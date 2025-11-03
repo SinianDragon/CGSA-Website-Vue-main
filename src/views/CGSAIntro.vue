@@ -1,9 +1,37 @@
 <script setup lang="ts">
-// About page component
+/**
+ * 帮助函数：从 src/assets/ 动态获取图片
+ * 路径: src/assets/images/presidents/
+ */
+const getImageUrl = (name: string) => {
+  if (!name) return '';
+  try {
+    return new URL(`../assets/images/presidents/${name}`, import.meta.url).href;
+  } catch (e) {
+    console.warn(`图片未在 assets/images/presidents/ 中找到: ${name}`);
+    return ''; // 图片不存在
+  }
+};
+
+// 【重要】请把你们的大合照命名为 "cgsa_group_photo.jpg"
+// 然后把它也放进 src/assets/images/presidents/ 文件夹
+const groupPhotoName = "all.jpg";
+
 </script>
 <template>
   <div class="about">
     <h1>组织介绍</h1>
+
+    <img
+        v-if="getImageUrl(groupPhotoName)"
+        :src="getImageUrl(groupPhotoName)"
+        alt="CGSA Group Photo"
+        class="group-photo"
+    />
+    <div v-else class="photo-placeholder">
+      大合照
+    </div>
+
     <p>
       我们是南加州大学中国研究生学生会，简称USC-CGSA。
       我们的宗旨是为南加大的中国研究生，博士生，MBA提供一个专注于就业，
@@ -14,4 +42,47 @@
 
 <style scoped lang="scss">
 @use "@/styles/main.scss" as *;
+
+.about {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  color: $usc-red;
+  margin-top: 0;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.group-photo {
+  width: 100%;
+  max-height: 600px; /* 关键修改：设置一个合理的最大高度 */
+  height: auto;
+  object-fit: cover; /* 关键修改：用 cover 填满，裁切多余部分 */
+  object-position: center; /* 确保从中间裁切 */
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+.photo-placeholder {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  background: #f0f0f0;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
 </style>
