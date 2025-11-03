@@ -1,20 +1,15 @@
 <script setup lang="ts">
-/**
- * 帮助函数：从 src/assets/ 动态获取图片
- * 路径: src/assets/images/presidents/
- */
+
 const getImageUrl = (name: string) => {
   if (!name) return '';
   try {
-    return new URL(`../assets/images/presidents/${name}`, import.meta.url).href;
+    return new URL(`../assets/images/members/${name}`, import.meta.url).href;
   } catch (e) {
-    console.warn(`图片未在 assets/images/presidents/ 中找到: ${name}`);
-    return ''; // 图片不存在
+    console.warn(`图片未在 assets/images/members/ 中找到: ${name}`);
+    return '';
   }
 };
 
-// 【重要】请把你们的大合照命名为 "cgsa_group_photo.jpg"
-// 然后把它也放进 src/assets/images/presidents/ 文件夹
 const groupPhotoName = "all.jpg";
 
 </script>
@@ -65,7 +60,7 @@ p {
 
 .group-photo {
   width: 100%;
-  max-height: 600px; /* 关键修改：设置一个合理的最大高度 */
+  max-height: 800px; /* 关键修改：设置一个合理的最大高度 */
   height: auto;
   object-fit: cover; /* 关键修改：用 cover 填满，裁切多余部分 */
   object-position: center; /* 确保从中间裁切 */
@@ -74,7 +69,7 @@ p {
 }
 .photo-placeholder {
   width: 100%;
-  height: 400px;
+  height: 500px;
   border-radius: 8px;
   background: #f0f0f0;
   color: #aaa;

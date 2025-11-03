@@ -10,6 +10,7 @@ import Activity from "../views/Activity.vue";
 import Alumni from "../views/Alumni.vue";
 import Discounts from "@/views/Discounts.vue";
 import AboutLayout from "../views/about/AboutLayout.vue";
+import DepartmentDetail from "../views/about/DepartmentDetail.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -39,6 +40,12 @@ const router = createRouter({
                   path: "departments",
                   name: "departments",
                   component: Departments,
+              },
+              {
+                  path: "department/:id", // :id 是动态参数
+                  name: "department-detail",
+                  component: DepartmentDetail,
+                  props: true // 自动把 :id 作为 prop 传给组件
               },
           ],
       },
