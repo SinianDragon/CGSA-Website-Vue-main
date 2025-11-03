@@ -1,0 +1,93 @@
+// https://identity.usc.edu/identity/color/
+// Primary USC Colors
+$usc-red: #990000;
+$usc-gold: #ffcc00;
+
+// Tertiary Colors
+$usc-citrus: #f2c6a7;
+$usc-coral: #f26178;
+$usc-blue: #2b5597;
+$usc-pickle: #908c13;
+$usc-yellow: #fde021;
+$usc-green: #dae343;
+$usc-orange: #ff9015;
+$usc-bright-red: #e43d30;
+
+// Spacing
+$std-padding: 1rem;
+$big-padding: 2rem;
+
+h1,
+h2 {
+  color: $usc-red;
+}
+
+.activity-page {
+  display: flex;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  width: 250px;
+  background: #fafafa;
+  padding: 1.2rem;
+  border-right: 1px solid #ddd;
+
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: $usc-red;
+  }
+
+  details {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;
+
+    li {
+      cursor: pointer;
+      padding: 0.3rem 0;
+      color: #333;
+
+      &:hover {
+        color: $usc-red;
+        text-decoration: underline;
+      }
+
+      &.active {
+        font-weight: bold;
+        color: $usc-red;
+      }
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  min-height: 400px;
+
+  .activity-detail {
+    max-width: 800px;
+    margin: auto;
+
+    .card-img-top {
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .btn {
+      margin-top: 1rem;
+    }
+  }
+
+  .placeholder {
+    text-align: center;
+    color: #666;
+    padding: 3rem 1rem;
+  }
+}
